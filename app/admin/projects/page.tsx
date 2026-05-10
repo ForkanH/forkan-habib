@@ -13,7 +13,7 @@ export default function Page() {
         fields={[
           { name: 'title', label: 'Title', type: 'text' },
           { name: 'description', label: 'Description', type: 'textarea' },
-          { name: 'thumbnail_url', label: 'Thumbnail URL', type: 'url' },
+          { name: 'thumbnail_url', label: 'Thumbnail URL', type: 'image' },
           { name: 'tags', label: 'Tags', type: 'tags' },
           { name: 'demo_url', label: 'Live demo URL', type: 'url' },
           { name: 'github_url', label: 'GitHub URL', type: 'url' },

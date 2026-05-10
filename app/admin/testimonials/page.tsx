@@ -14,7 +14,7 @@ export default function Page() {
           { name: 'name', label: 'Name', type: 'text' },
           { name: 'role', label: 'Role', type: 'text' },
           { name: 'company', label: 'Company', type: 'text' },
-          { name: 'photo_url', label: 'Photo URL', type: 'url' },
+          { name: 'photo_url', label: 'Photo', type: 'image', bucket: 'avatars' },
           { name: 'text', label: 'Quote', type: 'textarea' },
           { name: 'rating', label: 'Rating 1-5', type: 'number' },
           { name: 'is_visible', label: 'Visible', type: 'boolean' },

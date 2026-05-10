@@ -187,11 +187,12 @@ insert into public.hero_stats (label, value, order_index) values
   ('Happy clients', '25+', 3)
 on conflict do nothing;
 
-insert into public.about (bio_1, bio_2, bio_3, is_available, social_links, values) values (
+insert into public.about (bio_1, bio_2, bio_3, is_available, photo_url, social_links, values) values (
   'I''m Forkan — an AI automation specialist based in Bangladesh. I help founders and teams ship intelligent systems that quietly do the work of an entire department.',
   'For the past few years I''ve been deep in n8n workflows, self-hosted infrastructure, and AI-first product development — building things like UkilAI, AI Chobiwala, and bilingual legal tools.',
   'I treat every project as a craft: minimal moving parts, sensible defaults, and code you can hand off without a manual. If it can be automated, I''ll find a way.',
   true,
+  '/about-image.png',
   '{"linkedin":"https://linkedin.com/in/forkan","github":"https://github.com/forkan","facebook":"https://facebook.com/forkan","youtube":"https://youtube.com/@forkan"}'::jsonb,
   '[
     {"title":"Automate the boring","description":"Workflows should free your hours, not consume them."},

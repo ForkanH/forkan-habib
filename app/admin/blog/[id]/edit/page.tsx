@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { RichEditor } from '@/components/admin/rich-editor';
+import { ImageUpload } from '@/components/admin/image-upload';
 
 export default function EditPost() {
   const sb = createClient();
@@ -34,7 +35,7 @@ export default function EditPost() {
       <div className="space-y-4">
         <div><Label>Title</Label><Input className="mt-1.5" value={p.title || ''} onChange={e => setP({ ...p, title: e.target.value })}/></div>
         <div><Label>Slug</Label><Input className="mt-1.5" value={p.slug || ''} onChange={e => setP({ ...p, slug: e.target.value })}/></div>
-        <div><Label>Cover image URL</Label><Input className="mt-1.5" value={p.cover_url || ''} onChange={e => setP({ ...p, cover_url: e.target.value })}/></div>
+        <div><Label>Cover image</Label><ImageUpload bucket="blog" value={p.cover_url || ''} onChange={url => setP({ ...p, cover_url: url })}/></div>
         <div><Label>Excerpt</Label><Textarea className="mt-1.5" value={p.excerpt || ''} onChange={e => setP({ ...p, excerpt: e.target.value })}/></div>
         <div><Label>Tags</Label><Input className="mt-1.5" placeholder="comma,separated" value={(p.tags || []).join(', ')} onChange={e => setP({ ...p, tags: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean) })}/></div>
         <div><Label>Reading time (min)</Label><Input className="mt-1.5" type="number" value={p.reading_time ?? 3} onChange={e => setP({ ...p, reading_time: Number(e.target.value) })}/></div>

@@ -8,12 +8,14 @@ import { Label } from '@/components/ui/label';
 import { Pencil, Plus, Trash2, ArrowUp, ArrowDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { RichEditor } from '@/components/admin/rich-editor';
+import { ImageUpload } from '@/components/admin/image-upload';
 
 export type FieldDef =
   | { name: string; label: string; type: 'text' | 'number' | 'url'; required?: boolean }
   | { name: string; label: string; type: 'textarea' | 'richtext'; required?: boolean }
   | { name: string; label: string; type: 'boolean' }
   | { name: string; label: string; type: 'tags' }
+  | { name: string; label: string; type: 'image'; bucket?: string }
   | { name: string; label: string; type: 'select'; options: string[] };
 
 export function CrudTable({ table, fields, columns, orderBy = 'order_index', allowReorder = false, defaults = {} }:
@@ -129,6 +131,8 @@ function FormDialog({ fields, initial, onSave, onClose }: { fields: FieldDef[]; 
                 <Input className="mt-1.5" placeholder="comma,separated,tags"
                   value={Array.isArray(v[f.name]) ? v[f.name].join(', ') : (v[f.name] ?? '')}
                   onChange={e => setV({ ...v, [f.name]: e.target.value.split(',').map((s: string) => s.trim()).filter(Boolean) })}/>
+              ) : f.type === 'image' ? (
+                <ImageUpload bucket={f.bucket} value={v[f.name] ?? ''} onChange={url => setV({ ...v, [f.name]: url })} />
               ) : f.type === 'select' ? (
                 <select className="mt-1.5 flex h-10 w-full rounded-md border border-border bg-background px-3 text-sm"
                   value={v[f.name] ?? ''} onChange={e => setV({ ...v, [f.name]: e.target.value })}>

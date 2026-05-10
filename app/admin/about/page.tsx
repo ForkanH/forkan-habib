@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import { ImageUpload } from '@/components/admin/image-upload';
 
 export default function AboutAdmin() {
   const sb = createClient();
@@ -35,7 +36,7 @@ export default function AboutAdmin() {
         {[1,2,3].map(n => (
           <div key={n}><Label>Bio paragraph {n}</Label><Textarea className="mt-1.5" value={v[`bio_${n}`] || ''} onChange={e => setV({ ...v, [`bio_${n}`]: e.target.value })}/></div>
         ))}
-        <div><Label>Photo URL</Label><Input className="mt-1.5" value={v.photo_url || ''} onChange={e => setV({ ...v, photo_url: e.target.value })}/></div>
+        <div><Label>Photo</Label><ImageUpload bucket="avatars" value={v.photo_url || ''} onChange={url => setV({ ...v, photo_url: url })}/></div>
         <label className="flex items-center gap-2"><input type="checkbox" checked={!!v.is_available} onChange={e => setV({ ...v, is_available: e.target.checked })}/> Open to projects</label>
         <div className="grid grid-cols-2 gap-3">
           {(['linkedin','github','facebook','youtube'] as const).map(k => (
